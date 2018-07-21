@@ -5,7 +5,8 @@ USE intranet;
 
 CREATE TABLE usuarios(
 	usuario varchar(45) PRIMARY KEY,
-	clave varchar(45) NOT NULL
+	clave varchar(45) NOT NULL,
+	admin boolean NOT NULL
 );
 
 CREATE TABLE datosPersonales(
@@ -31,8 +32,16 @@ CREATE TABLE permisos(
 );
 
 INSERT categorias VALUES
-(NULL,'seccion A','Esta es la seccion de videos explicativos','seccionA.php'),
-(NULL,'seccion B','Esta es la seccion de material academcio.','seccionB.php');
+(NULL,'Multimedia','Esta es la seccion de videos explicativos','multimedia.php'),
+(NULL,'Matrial Academico','Esta es la seccion de material academcio para descargar.','material.php'),
+(NULL,'Tareas','Esta es la seccion presenta una serie de tarea para los alumnos.','tareas.php'),
+(NULL,'Curiosidades','Frases celebres provervios y adivinanzas.','curiosidades.php');
 
 INSERT usuarios VALUES
-('usuarioTest', '654321');
+('usuarioTest', '654321',0),
+('BerniPrueba', '654321',0),
+('Admin','123456',1);
+
+INSERT permisos VALUES
+('usuarioTest',1),('usuarioTest',4),
+('BerniPrueba',2),('BerniPrueba',3);

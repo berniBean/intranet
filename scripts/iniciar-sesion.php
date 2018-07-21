@@ -6,7 +6,9 @@
 	
 	conectar();
 	if (validarLogin($usuario,$clave)){
-		 header('Location:../panelUsuario.php');
+		if(esAdmin())
+		  	  header('Location:../panelAdmin.php');	
+		 else header('Location:../panelUsuario.php');
 	}else{
 
  ?>

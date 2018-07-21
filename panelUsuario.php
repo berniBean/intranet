@@ -1,11 +1,13 @@
 <?php
   require 'scripts/funciones.php';
+  
+
   if(!sesionIniciada()){
      header('Location: index.html');
   }
 
   conectar();
-  $categorias=getCategorias();
+  $categorias=getCategoriasPorUser();
   desconectar();
 ?>
 
@@ -25,13 +27,10 @@
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link active" href="#">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="scripts/cerrar-sesion.php">Cerrar sesión</a>
             </li>
           </ul>
         </nav>
@@ -45,20 +44,17 @@
       </div>
 
       <div class="row marketing">
-        <div class="col-lg-6">
+
             <?php foreach ($categorias as $fila ): ?>
-              <div class="col-lg-6">
-                <h4><a href="categorias/<?php echo  $fila[3] ?>"><?php echo  $fila[1] ?></a></h4>
-                <p><?php echo  $fila[2] ?></p>
-              </div>                        
+      <div class="col-lg-6">
+                <h4><a href="categorias/<?php echo  $fila[2] ?>"><?php echo  $fila[0] ?></a></h4>
+                <p><?php echo  $fila[1] ?></p>   
+      </div>                                  
             <?php endforeach?>    
-
-
-      </div>
       </div>
 
       <footer class="footer">
-        <p>&copy; Company 2017</p>
+        <p>&copy; BerniNet 2018</p>
       </footer>
 
     </div> <!-- /container -->
