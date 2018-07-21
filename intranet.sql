@@ -33,3 +33,6 @@ CREATE TABLE permisos(
 INSERT categorias VALUES
 (NULL,'seccion A','Esta es la seccion de videos explicativos','seccionA.php'),
 (NULL,'seccion B','Esta es la seccion de material academcio.','seccionB.php');
+
+INSERT usuarios VALUES
+('usuarioTest', '654321');

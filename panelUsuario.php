@@ -1,3 +1,14 @@
+<?php
+  require 'scripts/funciones.php';
+  if(!sesionIniciada()){
+     header('Location: index.html');
+  }
+
+  conectar();
+  $categorias=getCategorias();
+  desconectar();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,33 +39,22 @@
       </div>
 
       <div class="jumbotron">
-        <h1 class="display-3">Jumbotron heading</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <h1 class="display-3">Bienvenido, <?php echo $_SESSION['usuario'] ?>.</h1>
+        <p class="lead">Bienvenido al sistema de admisntracion de requerimientos.</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
       </div>
 
       <div class="row marketing">
         <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            <?php foreach ($categorias as $fila ): ?>
+              <div class="col-lg-6">
+                <h4><a href="categorias/<?php echo  $fila[3] ?>"><?php echo  $fila[1] ?></a></h4>
+                <p><?php echo  $fila[2] ?></p>
+              </div>                        
+            <?php endforeach?>    
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
+      </div>
       </div>
 
       <footer class="footer">
