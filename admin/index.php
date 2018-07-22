@@ -1,5 +1,6 @@
 <?php
-  require 'scripts/funciones.php';
+  require '../scripts/funciones.php';
+
   
 
   if(!sesionIniciada() || !esAdmin()){
@@ -30,12 +31,12 @@
   </head>
 
   <body>
-    <?php include 'admin/menu-superior.php' ?>
+    <?php include 'menu-superior.php' ?>
 
     <div class="container-fluid">
       <div class="row">
        
-       <?php include 'admin/menu-lateral.php' ?>
+       <?php include 'menu-lateral.php' ?>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -51,34 +52,6 @@
                 This week
               </button>
             </div>
-          </div>
-
-          <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-          <h2>Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th># ID</th>
-                  <th>Nombre de usuario</th>
-                  <th>Edición</th>
-
-                </tr>
-              </thead>
-              <tbody>
-               <?php $i=1; foreach ($usuarios as $usuario): ?>
-                <tr>
-                  <td><?php echo $i++; ?></td>
-                  <td><?php echo $usuario[0] ?></td>
-                  <td><a href="admin/permisos.php?usuario=<?php echo $usuario[0]?>">Editar permisos</td>
-                </tr>
-
-               <?php endforeach?>  
-
-                
-              </tbody>
-            </table>
           </div>
         </main>
       </div>

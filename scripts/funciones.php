@@ -45,6 +45,24 @@
 		return false;
 	}
 
+	function eliminarPermisos($usuario){
+	    global $conexion;
+		mysqli_query($conexion,"DELETE FROM permisos WHERE usuario='".$usuario."'");	
+	}
+
+	function tienePermisos($usuario, $idCat){
+		global $conexion;
+		$result = mysqli_query($conexion, "SELECT COUNT(*) AS total FROM permisos WHERE usuario='".$usuario."' AND ID_Categoria=".$idCat);
+		$row = mysqli_fetch_assoc($result);
+		$numero = $row['total'];
+		return $numero > 0;
+	}
+
+	function asignarPermisos($usuario, $idCat){
+	    global $conexion;
+		mysqli_query($conexion,"INSERT INTO permisos VALUES('".$usuario."',".$idCat.")");			
+	}
+
     function sesionIniciada(){
     	session_start();
 		return isset($_SESSION['usuario']);
